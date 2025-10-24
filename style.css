@@ -193,7 +193,7 @@ nav a:not(:has(button)):hover {
 }
 
 /* --- MOBILE RESPONSIVE --- */
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
 
   /* hide nav links by default */
 
@@ -235,19 +235,8 @@ nav a:not(:has(button)):hover {
   }
 }
 
+/*vectors in the corner*/
 
-/* MAIN CONTENT STYLING */
-
-/* HERO SECTION */
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 60px 100px;
-  background-color: var(--blue);
-  color: white;
-  gap: 60px;
-}
 .vector-design1 {
   position: fixed;
   bottom: 30px;
@@ -270,6 +259,21 @@ nav a:not(:has(button)):hover {
   height: auto;
   z-index: 10;
 }
+
+/* MAIN CONTENT STYLING */
+
+/* HERO SECTION */
+.hero {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 60px;
+  background-color: var(--blue);
+  color: white;
+  gap: 60px;
+}
+
 
 /* LEFT SIDE (TEXT) */
 .hero-left {
@@ -305,12 +309,14 @@ nav a:not(:has(button)):hover {
   border: 1px solid white;
 }
 
-/* RIGHT SIDE (STACKED IMAGES) */
+/* ---------------------------
+   IMAGE STACK SECTION
+---------------------------- */
 .hero-right {
   position: relative;
   width: 50%;
   height: 420px;
-  max-width: 345px;
+  max-width: 340px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -319,40 +325,54 @@ nav a:not(:has(button)):hover {
 .image-stack {
   position: relative;
   width: 90%;
-  aspect-ratio: 4 / 5; /* adjust this to your image proportions */
-  max-width: 345px;
+  max-width: 320px;
   transition: all 0.5s ease;
 }
 
+/* Stack Images */
 .stack-image {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 4px;
-  transition: all 0.5s ease;
+  top: 50%;
+  left: 50%;
+  width: 260px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  transform: translate(-50%, -50%);
+  transition:
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.6s ease;
 }
 
-/* stacked "photo album" look */
+/* Layered "photo album" look */
 .stack-image:nth-child(2) {
-  transform: scale(0.97) rotate(1deg);
-  z-index: 0;
-  opacity: 0.6;
+  transform: translate(-50%, -50%) scale(0.95) rotate(2deg);
+  z-index: 1;
+  opacity: 0.75;
 }
 
 .stack-image:nth-child(3) {
-  transform: scale(0.98) rotate(-1deg);
-  z-index: -1;
-  opacity: 0.4;
+  transform: translate(-50%, -50%) scale(0.9) rotate(-3deg);
+  z-index: 0;
+  opacity: 0.55;
 }
 
 .stack-image.active {
+  transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  z-index: 2;
   opacity: 1;
-  transform: scale(1) rotate(0deg);
-  z-index: 3;
 }
 
-/* ARROWS CONTAINER */
+/* Optional small “lift” animation */
+@keyframes lift {
+  0% { transform: translate(-50%, -50%) scale(0.95); }
+  60% { transform: translate(-50%, -55%) scale(1.02); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* ---------------------------
+   ARROWS
+---------------------------- */
 .arrows {
   position: absolute;
   top: 50%;
@@ -362,114 +382,130 @@ nav a:not(:has(button)):hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  pointer-events: none; /* prevents blocking image clicks */
+  pointer-events: none; /* lets clicks through the container */
 }
 
-/* ARROW BUTTONS */
-/* ARROWS CONTAINER */
-.arrows {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  transform: translateY(-50%);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  pointer-events: none; /* allows clicks through container */
-}
-
-/* ARROW BUTTONS */
+/* Buttons */
 .arrow {
   background: none;
   border: none;
   cursor: pointer;
   pointer-events: auto;
-  width: 28px;   /* fixed size — won't shrink */
-  height: 25px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease;
 }
 
-/* ICON IMAGE */
+/* Arrow Images */
 .arrow img {
-  width: 55px;   /* keep image size fixed */
-  height: 55px;
+  
   object-fit: contain;
-  filter: brightness(100%); /* ensures white icons stay crisp */
+  filter: brightness(100%);
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-/* HOVER EFFECT */
+.arrow.right img{
+width: 58px;
+height: 58px;
+}
 .arrow:hover img {
   transform: scale(1.1);
 }
 
-/* POSITIONS */
+/* Default arrow positions */
 .arrow.left {
-  margin-left: -65px; /* outside the image area */
+  margin-left: -55px;
 }
-
 .arrow.right {
-  margin-right: -65px;
+  margin-right: -55px;
 }
 
+/* ---------------------------
+   RESPONSIVE DESIGN
+---------------------------- */
 
-
-
-/* RIGHT SIDE (TEXT) */
-.hero-right {
-  width: 50%;
+/* Large screens: bring arrows closer */
+@media (min-width: 1200px) {
+  .arrow.left {
+    margin-left: -40px;
+  }
+  .arrow.right {
+    margin-right: -40px;
+  }
 }
 
-.hero-right h1 {
-  font-size: 2.2rem;
-  margin-bottom: 20px;
-  font-weight: 700;
+/* Medium screens (1000–1199px) */
+@media (max-width: 1199px) and (min-width: 1000px) {
+  .hero-right {
+    max-width: 280px;
+  }
+
+  .stack-image {
+    width: 220px;
+  }
+
+  .arrow.left {
+    margin-left: -45px;
+  }
+  .arrow.right {
+    margin-right: -45px;
+  }
 }
 
-.hero-right p {
-  font-size: 16px;
-  font-style: italic;
-  margin-bottom: 30px;
-  line-height: 1.6;
-}
-
-.hero-right button {
-  padding: 12px 25px;
-  background-color: white;
-  color: var(--blue);
-  border: none;
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-
-
-/* RESPONSIVE DESIGN */
-@media (max-width: 900px) {
+/* Small screens (<1000px): stack vertically */
+@media (max-width: 1000px) {
   .hero {
     flex-direction: column;
-    padding: 20px 20px;
+    align-items: center;
+    padding: 20px;
   }
-.image-stack{
-  width: 200px;
-  height: 200px;
+
+  .hero-right {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .image-stack {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+  }
+
+  .stack-image {
+    width: 160px;
+  }
+
+  .arrows {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 200px;
+    margin: 0 auto;
+  }
+
+  .arrow.left {
+    margin-left: -5px;
+  }
+  .arrow.right {
+    margin-right: -135px;
+  }
+}
+
+/* Extra small screens (<600px) */
+@media (max-width: 600px) {
+
+   .arrow.left {
+    margin-left: -5px;
+  }
+  .arrow.right {
+    margin-right: -135px;
+  }
 
 }
-.hero-right{
-  margin-top: -100px;
-}
 
-  .arrow.left, .arrow.right {
-    left: 10px;
-    right: 10px;
-  }
-}
 
 /* WHY NUWA SECTION */
 .why-nuwa {
