@@ -8,35 +8,8 @@
     --lightgray: #D9D9D9;
     
 }
-html, body {
-  overflow-x: hidden; /* fine */
-  overflow-y: auto;
-}
 
 /*Transition*/
-/* --- PAGE TRANSITION LAYER --- */
-.page-transition {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--blue); /* same as your hero background */
-  transform: translateY(-100%);
-  transition: transform 0.8s ease-in-out;
-  z-index: 2000;
-}
-
-/* Slide down when exiting */
-body.exiting .page-transition {
-  transform: translateY(0);
-}
-
-/* Hide overlay when fully loaded */
-body.loaded .page-transition {
-  transform: translateY(100%);
-}
-
 
 /* Base Button Styles (applies to all buttons) */
 nav button::after {
@@ -221,11 +194,7 @@ nav a:not(:has(button)):hover {
 
 /* --- MOBILE RESPONSIVE --- */
 @media (max-width: 600px) {
-  header{
-    position: sticky;
-  top: 0;
-  z-index: 1000;
-  }
+
   /* hide nav links by default */
 
   nav ul {
@@ -1711,6 +1680,9 @@ margin-top: 3px;
 
 /* Responsive layout */
 @media (max-width: 1100px) {
+  .team p {
+    width: 400px;
+  }
   .team-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
