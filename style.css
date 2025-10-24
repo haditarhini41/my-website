@@ -408,8 +408,8 @@ nav a:not(:has(button)):hover {
 }
 
 .arrow.right img{
-width: 58px;
-height: 58px;
+width: 55px;
+height: 55px;
 }
 .arrow:hover img {
   transform: scale(1.1);

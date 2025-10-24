@@ -33,7 +33,74 @@
     <span></span>
   </div>
   </header>
-<body>
     <h1 style="font-size: 48px; text-align: center; margin-top: 20%;">This page is under construction</h1>
-</body>
+ <footer class="footer">
+  <div class="footer-top">
+    <!-- LEFT COLUMN: Logo + Location -->
+    <div class="footer-info">
+<a href="index.html">
+      <!-- Add the correct path or extension for your logo file -->
+      <img src="logo-05 1.png" alt="Nuwa Logo" class="logo">
+    </a>      <p class="location">
+        Bashoura 1526 <br>
+        Av. General Foaad Chehab<br>
+        Beirut Central Building, Bloc A<br>
+        6th Floor, Unit 44<br>
+        Beirut, Lebanon<br>
+      </p>
+    </div>
+
+    <!-- RIGHT COLUMN: Nav Links -->
+    <div class="footer-nav">
+      <nav>
+        <ul class="main-nav">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="https://maps.app.goo.gl/sL8hvPwxUWWMymtH8">Location</a></li>
+          <li><a href="#careers">Careers</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="investors.html">Investors</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter">
+    <p>Sign up to our newsletter</p>
+    <div class="newsletter-form">
+      <input type="email" placeholder="Your email">
+      <button class="sign-up">Sign Up</button>
+    </div>
+  </div>
+
+  <!-- SECONDARY NAV -->
+  <div class="footer-bottom">
+    <ul class="secondary-nav">
+      <li><a href="#">Terms</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Principles</a></li>
+      <li><a href="#">Cookie Settings</a></li>
+    </ul>
+  </div>
+</footer>
+<section class="copyright">
+  <p>© 2025 Nuwa Venture Partners. All rights reserved.<br>
+    No part of this website or its content may be reproduced or used without prior written permission from Nuwa Venture Partners.</p>
+</section>
+  </main>
+
+<script>
+
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('nav ul');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navMenu.classList.toggle('active');
+});
+</script>
+    </body>
+
 </html>
